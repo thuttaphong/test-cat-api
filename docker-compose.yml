@@ -29,6 +29,7 @@ services:
     build:
         context: .
         dockerfile: Dockerfile
+    image: app
     container_name: app
     environment: 
       - MONGO_URI=mongodb://mongo:27017/cat-exam

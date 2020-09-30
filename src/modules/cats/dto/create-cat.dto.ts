@@ -23,7 +23,7 @@ export class CreateCatDto {
 
   // Password
   @ApiProperty({
-    example: 'sounds',
+    example: ['sounds'],
     description: 'The sounds of the Cat',
     format: '[string]',
   })

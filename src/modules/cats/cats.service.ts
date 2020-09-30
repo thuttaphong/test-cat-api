@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CatsInterface } from './interface/cats.interface';
 import { CreateCatDto } from './dto/create-cat.dto';
+import { exception } from 'console';
 
 @Injectable()
 export class CatsService {
@@ -10,6 +11,8 @@ export class CatsService {
         @InjectModel('Cat') private readonly catModel: Model<CatsInterface>
     ) { }
     async createCat(createCatDto: CreateCatDto): Promise<CatsInterface> {
+        const finCat = await this.catModel.findOne({ title: createCatDto.title });
+        if (!finCat) throw new exception('title duplicate.');
         const cat = new this.catModel(createCatDto);
         await cat.save();
         return this.buildCatInfo(cat);

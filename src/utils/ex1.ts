@@ -8,7 +8,7 @@ export class Utils {
   }
 
   public static reformatData(x: any): Record<string, any> {
-    const result = x.reduce((h, data) => Object.assign(h, { [data.role]:( h[data.role] || [] ).concat({nickname: data.name}) }), {})
+    const result = x.reduce((h, data) => Object.assign(h, { [data.role]: (h[data.role] || []).concat({ nickname: data.name }) }), {})
     return result
   }
 }

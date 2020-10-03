@@ -10,6 +10,15 @@ describe('Intern Testing', () => {
     expect(Utils.findMin(3, 6, 9, 10, 1, 4, 8, 5, 7, 2)).toEqual(1)
     expect(Utils.findMin(30, 60, 90, 100, 10, 40, 80, 50, 70, 20)).toEqual(10)
   })
+  it('หาตัวเลขที่ บวกกัน แล้วได้ ค่า x', () => {
+    const input = [1, 2, 6, 8, 9, 9, 3, 4, 5, 10, 10]
+    const x = 19
+    const expected = [
+      [1, 2, 6, 10],
+      [4, 5, 10]
+    ]
+    expect(Utils.findExpectedNumber(input, x)).toEqual(expected)
+  })
 
   it('เปลี่ยนรูปแบบข้อมูลให้ตรงตามโจทย์', () => {
     const data = [

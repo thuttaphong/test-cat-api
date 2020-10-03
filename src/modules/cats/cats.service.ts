@@ -12,7 +12,7 @@ export class CatsService {
     ) { }
     async createCat(createCatDto: CreateCatDto): Promise<CatsInterface> {
         const finCat = await this.catModel.findOne({ title: createCatDto.title });
-        if (!finCat) throw new exception('title duplicate.');
+        if (finCat) throw new exception('title duplicate.');
         const cat = new this.catModel(createCatDto);
         await cat.save();
         return this.buildCatInfo(cat);
